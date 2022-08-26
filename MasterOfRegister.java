@@ -5,18 +5,28 @@ import java.util.Vector;
 public class MasterOfRegister {
     private String nombre;
     private String apellidos;
-    private int intnumeroTelefonico;
+    private long intnumeroTelefonico;
     private String numeroTelefonico;
 
     private String cedula;
+    private long intCedula;
 
     private String direccion;
 
     public String getCedula() {
-        Scanner lector = new Scanner(System.in);
-        System.out.println("Ingresa tu cedula");
-        this.cedula = lector.nextLine();
-        return this.cedula;
+        boolean end = false;
+
+        while (!end){
+            try{
+                Scanner lector = new Scanner(System.in);
+                System.out.println("Ingresa tu cedula");
+                this.intCedula = lector.nextLong();
+                this.cedula = String.valueOf(this.intCedula);
+                end = true;
+            }catch(Exception e){
+                System.out.println("Disculpa, debes agregar una cedula correcta;"+ " El error es " +e);
+            }
+        } return this.cedula;
     }
 
     public String getDireccion() {
@@ -41,10 +51,18 @@ public class MasterOfRegister {
     }
 
     public String getIntnumeroTelefonico() {
-        Scanner lector = new Scanner(System.in);
-        System.out.println("Ingresa el telefono");
-        this.numeroTelefonico = lector.nextLine();
-        return this.numeroTelefonico;
+        boolean end=false;
+        while(!end){
+            try {
+                Scanner lector = new Scanner(System.in);
+                System.out.println("Ingresa el telefono");
+                this.intnumeroTelefonico = lector.nextLong();
+                this.numeroTelefonico = String.valueOf(intnumeroTelefonico);
+                end = true;
+            }catch (Exception e){
+                System.out.println("Disculpa,debes agregar un numero telefonico correcto; " + "El error es " +e);
+            }
+        } return this.numeroTelefonico;
     }
 
     public String finalRegister(){
