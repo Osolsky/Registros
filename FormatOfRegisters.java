@@ -49,4 +49,9 @@ public class FormatOfRegisters {
         System.out.println("Introduce tu correo Electronico");
         this.correoElectronico = correoElectronico;
     }
+
+    public String registerComplete(String line){
+        line = getNombre() + getApellidos() + getCorreoElectronico() + getDireccion() + getNumeroTelefonico();
+        return line;
+    }
 }
