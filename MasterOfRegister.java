@@ -3,10 +3,56 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class MasterOfRegister {
-    String nombre;
-    String apellidos;
-    int intnumeroTelefonico;
-    String numeroTelefonico;
+    private String nombre;
+    private String apellidos;
+    private int intnumeroTelefonico;
+    private String numeroTelefonico;
+
+    private String cedula;
+
+    private String direccion;
+
+    public String getCedula() {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingresa tu cedula");
+        this.cedula = lector.nextLine();
+        return this.cedula;
+    }
+
+    public String getDireccion() {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingresa tu direccion");
+        this.direccion = lector.nextLine();
+        return this.direccion;
+    }
+
+    public String getNombre() {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingresa el nombre");
+        this.nombre = lector.nextLine();
+        return this.nombre;
+    }
+
+    public String getApellidos() {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingresa el apellido");
+        this.apellidos = lector.nextLine();
+        return this.apellidos;
+    }
+
+    public String getIntnumeroTelefonico() {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingresa el telefono");
+        this.numeroTelefonico = lector.nextLine();
+        return this.numeroTelefonico;
+    }
+
+    public String finalRegister(){
+        String line ="";
+        line = getCedula()+","+ getNombre() + "," + getApellidos() + "," +getIntnumeroTelefonico() + "," + getDireccion() ;
+        return line;
+    }
+
     public void addRegister(){
         try{
             FileWriter createFile = new FileWriter("E:\\Content\\correos.txt", true);
@@ -18,13 +64,14 @@ public class MasterOfRegister {
             while (!end){
                 System.out.println("Ingresa tu registro");
                 System.out.println("Para terminar el proceso escribe 'end'");
+                System.out.println("Para ingresar el registro escribe 'continue'");
                 lectureFromConsole = read.nextLine();
 
                 if (lectureFromConsole.equalsIgnoreCase("end")){
                     createFile.close();
                     end=true;
-                }else{
-                    writeInFile.println(lectureFromConsole);
+                }else if(lectureFromConsole.equalsIgnoreCase("continue")){
+                    writeInFile.println(finalRegister());
                     System.out.println("Registro salvado correctamente");
                 }
 
