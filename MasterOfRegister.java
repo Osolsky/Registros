@@ -20,34 +20,34 @@ public class MasterOfRegister {
             try{
                 Scanner lector = new Scanner(System.in);
                 System.out.println("Ingresa tu cedula");
-                this.intCedula = lector.nextLong();
-                this.cedula = String.valueOf(this.intCedula);
+                intCedula = lector.nextLong();
+                cedula = String.valueOf(intCedula);
                 end = true;
             }catch(Exception e){
                 System.out.println("Disculpa, debes agregar una cedula correcta;"+ " El error es " +e);
             }
-        } return this.cedula;
+        } return cedula;
     }
 
     public String getDireccion() {
         Scanner lector = new Scanner(System.in);
         System.out.println("Ingresa tu direccion");
-        this.direccion = lector.nextLine();
-        return this.direccion;
+        direccion = lector.nextLine();
+        return direccion;
     }
 
     public String getNombre() {
         Scanner lector = new Scanner(System.in);
         System.out.println("Ingresa el nombre");
-        this.nombre = lector.nextLine();
-        return this.nombre;
+        nombre = lector.nextLine();
+        return nombre;
     }
 
     public String getApellidos() {
         Scanner lector = new Scanner(System.in);
         System.out.println("Ingresa el apellido");
-        this.apellidos = lector.nextLine();
-        return this.apellidos;
+        apellidos = lector.nextLine();
+        return apellidos;
     }
 
     public String getIntnumeroTelefonico() {
@@ -56,13 +56,13 @@ public class MasterOfRegister {
             try {
                 Scanner lector = new Scanner(System.in);
                 System.out.println("Ingresa el telefono");
-                this.intnumeroTelefonico = lector.nextLong();
-                this.numeroTelefonico = String.valueOf(intnumeroTelefonico);
+                intnumeroTelefonico = lector.nextLong();
+                numeroTelefonico = String.valueOf(intnumeroTelefonico);
                 end = true;
             }catch (Exception e){
                 System.out.println("Disculpa,debes agregar un numero telefonico correcto; " + "El error es " +e);
             }
-        } return this.numeroTelefonico;
+        } return numeroTelefonico;
     }
 
     public String finalRegister(){
