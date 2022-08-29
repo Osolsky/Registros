@@ -16,17 +16,19 @@ public class MasterOfRegister {
     public String getCedula() {
         boolean end = false;
 
+
         while (!end){
-            try{
-                Scanner lector = new Scanner(System.in);
-                System.out.println("Ingresa tu cedula");
-                intCedula = lector.nextLong();
-                cedula = String.valueOf(intCedula);
+            Scanner lector = new Scanner(System.in);
+            System.out.println("Ingresa tu cedula");
+            intCedula = lector.nextLong();
+            cedula = String.valueOf(intCedula);
+            if (cedula.length()!=10){
+                System.out.println("Ingresa una cedula de 10 caracteres");
+            }else {
                 end = true;
-            }catch(Exception e){
-                System.out.println("Disculpa, debes agregar una cedula correcta;"+ " El error es " +e);
             }
-        } return cedula;
+        }      return cedula;
+
     }
 
     public String getDireccion() {
@@ -53,15 +55,17 @@ public class MasterOfRegister {
     public String getIntnumeroTelefonico() {
         boolean end=false;
         while(!end){
-            try {
                 Scanner lector = new Scanner(System.in);
                 System.out.println("Ingresa el telefono");
                 intnumeroTelefonico = lector.nextLong();
                 numeroTelefonico = String.valueOf(intnumeroTelefonico);
+
+            if (numeroTelefonico.length()!=10){
+                System.out.println("Ingresa un número telefonico de 10 dígitos");
+            }else {
                 end = true;
-            }catch (Exception e){
-                System.out.println("Disculpa,debes agregar un numero telefonico correcto; " + "El error es " +e);
             }
+
         } return numeroTelefonico;
     }
 
@@ -80,8 +84,8 @@ public class MasterOfRegister {
             String lectureFromConsole;
 
             while (!end){
-                System.out.println("Ingresa tu registro");
-                System.out.println("Para terminar el proceso escribe 'end'");
+                System.out.println("-----Ingresa tu registro-----");
+                System.out.println("Para regresar al menu escribe 'back'");
                 System.out.println("Para ingresar el registro escribe 'continue'");
                 lectureFromConsole = read.nextLine();
 
