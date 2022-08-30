@@ -13,6 +13,15 @@ public class MasterOfRegister {
 
     private String direccion;
 
+    private String correo;
+
+    public String getCorreo() {
+        Scanner lector = new Scanner(System.in);
+        System.out.println("Ingresa tu correo electronico");
+        correo = lector.nextLine();
+        return correo;
+    }
+
     public String getCedula() {
         boolean end = false;
 
@@ -71,7 +80,8 @@ public class MasterOfRegister {
 
     public String finalRegister(){
         String line ="";
-        line = getCedula()+","+ getNombre() + "," + getApellidos() + "," +getIntnumeroTelefonico() + "," + getDireccion() ;
+        line = getCedula()+","+ getNombre() + "," + getApellidos() + "," +getIntnumeroTelefonico() + "," + getDireccion() +
+        "," + getCorreo();
         return line;
     }
 
