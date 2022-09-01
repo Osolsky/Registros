@@ -99,7 +99,7 @@ public class MasterOfRegister {
                 System.out.println("Para ingresar el registro escribe 'continue'");
                 lectureFromConsole = read.nextLine();
 
-                if (lectureFromConsole.equalsIgnoreCase("end")){
+                if (lectureFromConsole.equalsIgnoreCase("back")){
                     createFile.close();
                     end=true;
                 }else if(lectureFromConsole.equalsIgnoreCase("continue")){
