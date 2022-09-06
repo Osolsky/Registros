@@ -24,7 +24,8 @@ public class Main {
                     case "view":
                         registerControl.seeRegisters();
                         break;
-
+                    case "final":
+                        registerControl.specificRegister();
                     case "end":
                     end = true;
                 }

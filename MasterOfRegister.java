@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 import java.util.Vector;
-
+import java.io.RandomAccessFile;
 public class MasterOfRegister {
     private String nombre;
     private String apellidos;
@@ -14,6 +14,8 @@ public class MasterOfRegister {
     private String direccion;
 
     private String correo;
+
+    public static int id;
 
     public String getCorreo() {
         Scanner lector = new Scanner(System.in);
@@ -59,6 +61,15 @@ public class MasterOfRegister {
         System.out.println("Ingresa el apellido");
         apellidos = lector.nextLine();
         return apellidos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+
+    public static void setId(int id) {
+        MasterOfRegister.id = id;
     }
 
     public String getIntnumeroTelefonico() {
@@ -117,23 +128,49 @@ public class MasterOfRegister {
     }
 
     public void seeRegisters() throws IOException {
-        int numOfRegisters = 0;
+        Scanner readingLine = new Scanner(System.in);
+
+
+            int numOfRegisters = 0;
+            File workingFile = new File("E:\\Content\\correos.txt");
+            BufferedReader readerOfWorkingFile = new BufferedReader(new FileReader(workingFile));
+            String lineOfWorkingFile;
+            Vector<String> vectorWhitFileContent = new Vector<String>(40);
+            while ((lineOfWorkingFile = readerOfWorkingFile.readLine()) != null) {
+                vectorWhitFileContent.addElement(lineOfWorkingFile);
+            }
+
+            String[] arrayOfVectorWhitFileContent = vectorWhitFileContent.toArray(new String[vectorWhitFileContent.size()]);
+            for (int i = 0; i < arrayOfVectorWhitFileContent.length; i++) {
+                ++numOfRegisters;
+                setId(numOfRegisters);
+                System.out.println(getId() + ".- " + arrayOfVectorWhitFileContent[i]);
+                System.out.println("------------------------------------------------------------");
+            }
+        }
+
+  public void specificRegister() throws IOException {
+        Scanner readingline = new Scanner(System.in);
+       System.out.println("Intgresa el numero del registro que quieres");
+        int aswerInt = readingline.nextInt();
         File workingFile = new File("E:\\Content\\correos.txt");
         BufferedReader readerOfWorkingFile = new BufferedReader(new FileReader(workingFile));
-        String lineOfWorkingFile;
+         String lineOfWorkingFile;
         Vector<String> vectorWhitFileContent = new Vector<String>(40);
         while ((lineOfWorkingFile = readerOfWorkingFile.readLine()) != null) {
-            vectorWhitFileContent.addElement(lineOfWorkingFile);
-        }
+          vectorWhitFileContent.addElement(lineOfWorkingFile);
+      }
 
-        String[] arrayOfVectorWhitFileContent = vectorWhitFileContent.toArray(new String[vectorWhitFileContent.size()]);
-        for (int i = 0; i < arrayOfVectorWhitFileContent.length; i++) {
-            ++numOfRegisters;
-            System.out.println(numOfRegisters + ".- " + arrayOfVectorWhitFileContent[i]);
-            System.out.println("------------------------------------------------------------");
-        }
+          String[] arrayOfVectorWhitFileContent = vectorWhitFileContent.toArray(new String[vectorWhitFileContent.size()]);
+          System.out.println(arrayOfVectorWhitFileContent[aswerInt]);
+  }
 
-    }
+
+
+
+
+
+
 
 
     public void userComunication(){
