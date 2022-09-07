@@ -1,3 +1,5 @@
+import com.sun.jdi.event.BreakpointEvent;
+
 import java.io.*;
 import java.util.Scanner;
 import java.util.Vector;
@@ -151,19 +153,59 @@ public class MasterOfRegister {
 
   public void specificRegister() throws IOException {
         Scanner readingline = new Scanner(System.in);
-       System.out.println("Intgresa el numero del registro que quieres");
-        int aswerInt = readingline.nextInt();
-        File workingFile = new File("E:\\Content\\correos.txt");
-        BufferedReader readerOfWorkingFile = new BufferedReader(new FileReader(workingFile));
-         String lineOfWorkingFile;
-        Vector<String> vectorWhitFileContent = new Vector<String>(40);
-        while ((lineOfWorkingFile = readerOfWorkingFile.readLine()) != null) {
-          vectorWhitFileContent.addElement(lineOfWorkingFile);
-      }
+        boolean end = false;
 
-          String[] arrayOfVectorWhitFileContent = vectorWhitFileContent.toArray(new String[vectorWhitFileContent.size()]);
-          System.out.println(arrayOfVectorWhitFileContent[aswerInt]);
-  }
+
+
+                File workingFile = new File("E:\\Content\\correos.txt");
+                BufferedReader readerOfWorkingFile = new BufferedReader(new FileReader(workingFile));
+                String lineOfWorkingFile;
+                Vector<String> vectorWhitFileContent = new Vector<String>(40);
+                while ((lineOfWorkingFile = readerOfWorkingFile.readLine()) != null) {
+                    vectorWhitFileContent.addElement(lineOfWorkingFile);
+                }
+
+                String[] arrayOfVectorWhitFileContent = vectorWhitFileContent.toArray(new String[vectorWhitFileContent.size()]);
+
+
+
+
+
+                    while (!end) {
+
+                        System.out.println("Intgresa el numero del registro que quieres");
+                        System.out.println("Para terminar de ver registros escribe 0");
+                        System.out.println("Tienes estos  " + (arrayOfVectorWhitFileContent.length-1) + " registros");
+                        int aswerInt = readingline.nextInt();
+
+                        if (aswerInt == 0) {
+                            end = true;
+                        } else {
+                            try {
+
+                                System.out.println(arrayOfVectorWhitFileContent[aswerInt]);
+                                System.out.println(" ");
+
+
+                            } catch (Exception e) {
+                                System.out.println("Error, registro no encontrado ");
+                            }
+                        }
+
+                    }
+
+                }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -177,6 +219,7 @@ public class MasterOfRegister {
         System.out.println("escribe 'add' para introducir un registro");
         System.out.println("escribe 'view' para ver tus registros");
         System.out.println("escribe 'end' para finalizar el programa");
+        System.out.println("escribe 'register' para ver un registro especifico");
     }
 
 }
